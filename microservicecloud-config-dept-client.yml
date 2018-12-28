@@ -1,0 +1,74 @@
+spring: 
+  profiles:
+    active:
+    - dev
+--- 
+server:
+  port: 8001
+spring: 
+   profiles: dev
+   application: 
+    name: microservicecloud-config-dept-client
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://172.16.89.130:3306/clouddb01
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200 
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml #mybatis主配置文件，一般mybatis的公共配置都放在此文件下，但整合了Spring后就全部迁移到Spring配置文件了。
+  type-aliases-package: com.godLike.cloud.entitys #mybatis扫描该包下所有的entity，在mapper文件只有使用到某个entity只需要写entityName就行了，无需写全路径。
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml #扫描该路径下所有mapper.xml文件
+eureka: 
+  client: #客户端注册进eureka服务列表内
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+info:
+  app.name: microservicecloud-springcloudconfig01
+  company.name: www.godLike.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+---
+server:
+  port: 8001
+spring: 
+   profiles: test
+   application: 
+    name: microservicecloud-config-dept-client
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://172.16.89.130:3306/clouddb02
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200  
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml #mybatis主配置文件，一般mybatis的公共配置都放在此文件下，但整合了Spring后就全部迁移到Spring配置文件了。
+  type-aliases-package: com.godLike.cloud.entitys #mybatis扫描该包下所有的entity，在mapper文件只有使用到某个entity只需要写entityName就行了，无需写全路径。
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml #扫描该路径下所有mapper.xml文件
+eureka: 
+  client: #客户端注册进eureka服务列表内
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+info:
+  app.name: microservicecloud-springcloudconfig02
+  company.name: www.godLike.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
