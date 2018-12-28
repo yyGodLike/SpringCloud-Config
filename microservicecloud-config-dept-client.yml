@@ -30,10 +30,10 @@ eureka:
     service-url: 
       defaultZone: http://eureka7001.com:7001/eureka
   instance:
-    instance-id: dept-8001.com
-    prefer-ip-address: true
+    instance-id: microservicecloud-dept:8001 #自定义服务实例名称
+    prefer-ip-address: true #访问路径可以显示ip
 info:
-  app.name: microservicecloud-springcloudconfig01
+  app.name: microservicecloud
   company.name: www.godLike.com
   build.artifactId: $project.artifactId$
   build.version: $project.version$
@@ -65,10 +65,12 @@ eureka:
     service-url: 
       defaultZone: http://eureka7001.com:7001/eureka
   instance:
-    instance-id: dept-8001.com
-    prefer-ip-address: true
+    instance-id: microservicecloud-dept:8001 #自定义服务实例名称
+    prefer-ip-address: true #访问路径可以显示ip
 info:
-  app.name: microservicecloud-springcloudconfig02
+  app.name: microservicecloud
   company.name: www.godLike.com
   build.artifactId: $project.artifactId$
   build.version: $project.version$
+
+
